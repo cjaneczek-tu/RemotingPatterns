@@ -1,7 +1,5 @@
-psychic-octo-shame
-==================
-
 DEZSYS01 - REMOTING PATTERNS
+==================
 
 Das Framework für Remoting Patterns finden sie unter dem Thema "Resources"!
 
