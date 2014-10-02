@@ -36,6 +36,33 @@ public class CRUDTests {
 		assertEquals(getBytes().length, readBytes.length);
 		assertEquals(testString, new String(readBytes));
 	}
+	
+	/*
+	 * A method to test the reaction of the server when he receives a null object
+	 */
+	@Test
+	public void correctCreationAndReadZero() {
+		String identifier = null;
+		insertObject(identifier);
+		byte[] readBytes = serverPeer.read(identifier);
+		assertEquals(getBytes().length, readBytes.length);
+		assertEquals(testString, new String(readBytes));
+	}
+	
+	/*
+	 * A method to test the reaction of the server when he receives a lot of read tasks at once
+	 */
+	@Test
+	public void correctCreationAndReadloop() {
+		String identifier = "Wow";
+		insertObject(identifier);
+		byte[] readBytes = null;
+		for(int i = 0; i<500; i++){
+			readBytes = serverPeer.read(identifier);
+		}
+		assertEquals(getBytes().length, readBytes.length);
+		assertEquals(testString, new String(readBytes));
+	}
 
 //	@Test(expected = EppErrorException.class)
 //	public void createAlreadyExisting() throws EppErrorException {

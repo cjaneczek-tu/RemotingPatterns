@@ -27,6 +27,16 @@ public class AuthenticationTests {
 		peer.login(Helper.correctPassword, Helper.correctPassword);
 		peer.logout();
 	}
+	
+	/*
+	 * A method which tests what happens when there is someone going to login twice
+	 */
+	@Test
+	public void correctDoubleLogin() throws Exception {
+		peer.login(Helper.correctPassword, Helper.correctPassword);
+		peer.login(Helper.correctPassword, Helper.correctPassword);
+		peer.logout();
+	}
 
 	@Test(expected = EppErrorException.class)
 	public void wrongUserName() throws EppErrorException {
